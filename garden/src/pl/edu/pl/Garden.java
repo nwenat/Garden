@@ -1,8 +1,15 @@
 package pl.edu.pl;
 
+import java.util.Scanner;
+
 public class Garden {
 
+    private Scanner scanner = new Scanner(System.in);
+
     public void start(){
-        System.out.println("Program dziala");
+
+        Menu menu = new Menu();
+        menu.showMenu(scanner);
+
     }
 }
