@@ -1,15 +1,15 @@
 package pl.edu.pl;
 
-public class Animal extends Creature {
+public abstract class Animal extends Creature {
 
     private static long animalCount = 0;
     private Person owner;
     private Position position;
 
-    public Animal(String firstName, int age, Gender gender, Person owner, Position position) {
+    public Animal(String firstName, int age, Gender gender, Person owner) {
         super(firstName, age, gender);
         this.owner = owner;
-        this.position = position;
+        this.position = new Position(0, 0);
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

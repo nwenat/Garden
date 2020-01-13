@@ -12,6 +12,11 @@ public class Person extends Creature {
         this.lastName = lastName;
     }
 
+    @Override
+    public void info() {
+        System.out.println("Person info");
+    }
+
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
 
     public long getId() {

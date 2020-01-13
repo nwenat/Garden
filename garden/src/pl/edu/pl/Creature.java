@@ -22,6 +22,8 @@ public abstract class Creature {
         this.gender = gender;
     }
 
+    public abstract void info();
+
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
 
     public String getFirstName() {
