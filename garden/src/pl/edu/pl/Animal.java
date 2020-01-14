@@ -2,14 +2,22 @@ package pl.edu.pl;
 
 public abstract class Animal extends Creature {
 
-    private static long animalCount = 0;
+    private static long animalCount = 1;
     private Person owner;
     private Position position;
 
     public Animal(String firstName, int age, Gender gender, Person owner) {
-        super(firstName, age, gender);
+        super(animalCount, firstName, age, gender);
+        animalCount++;
         this.owner = owner;
         this.position = new Position(0, 0);
+    }
+
+    public void infooo() {
+        System.out.println("Id: " + getId());
+        System.out.println(getFirstName());
+        System.out.println("Wiek: " + getAge());
+        System.out.println("Plec: " + getGender().getValuePL());
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

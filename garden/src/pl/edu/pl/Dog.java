@@ -11,7 +11,9 @@ public class Dog extends Animal{
 
     @Override
     public void info() {
-        System.out.println("Dog info");
+        super.infooo();
+        System.out.println("Rasa: " + breed);
+        System.out.println("--------------");
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

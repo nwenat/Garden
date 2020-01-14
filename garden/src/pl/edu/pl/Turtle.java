@@ -10,6 +10,10 @@ public class Turtle extends Animal {
         Condition(String valuePL) {
             this.valuePL = valuePL;
         }
+
+        public String getValuePL() {
+            return valuePL;
+        }
     }
 
     private Condition condition;
@@ -21,7 +25,9 @@ public class Turtle extends Animal {
 
     @Override
     public void info() {
-        System.out.println("Turtle info");
+        super.infooo();
+        System.out.println("Stan: " + condition.getValuePL());
+        System.out.println("--------------");
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

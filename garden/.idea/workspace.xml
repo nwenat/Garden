@@ -4,10 +4,12 @@
     <list default="true" id="e3a83c9f-1e78-4dc5-9fe3-9dd8cf84b5a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Dog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Garden.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Garden.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Turtle.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +79,8 @@
       <workItem from="1578756908943" duration="2076000" />
       <workItem from="1578760525143" duration="2835000" />
       <workItem from="1578850214725" duration="4231000" />
-      <workItem from="1578904822544" duration="1843000" />
+      <workItem from="1578904822544" duration="2621000" />
+      <workItem from="1578988434375" duration="2040000" />
     </task>
     <servers />
   </component>
