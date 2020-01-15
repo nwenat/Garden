@@ -19,13 +19,13 @@ public class Menu {
                     System.out.println("Zapisanie i zamknięnie programu ///////");
                     break;
                 case ADD_USER:
-                    dataBase.addUser();
+                    //dataBase.addUser();
                     break;
                 case REMOVE_USER:
-                    dataBase.removeUser();
+                    //dataBase.removeUser();
                     break;
                 case LIST_OF_USERS:
-                    System.out.println("Wyświetlenie listy uzytkownikow ///////");
+                    dataBase.showOwnerList();
                     break;
                 case ADD_ANIMAL:
                     System.out.println("Dodaj ziwerze ///////");
@@ -34,7 +34,7 @@ public class Menu {
                     System.out.println("Usun zwierze ///////");
                     break;
                 case LIST_OF_ANIMAL:
-                    System.out.println("Wyświetlenie listy zwierzat ///////");
+                    dataBase.showAnimalsList();
                     break;
                 case MOVE_ANIMAL:
                     System.out.println("Przesun zwierze ///////");

@@ -1,5 +1,7 @@
 package pl.edu.pl;
 
+import java.util.Objects;
+
 public class Person extends Creature {
 
     private static long personCount = 1;
@@ -18,7 +20,27 @@ public class Person extends Creature {
         System.out.println(getFirstName() + " " + getLastName());
         System.out.println("Wiek: " + getAge());
         System.out.println("Plec: " + getGender().getValuePL());
+        System.out.println("Zwierzaki: ....");
         System.out.println("--------------");
+    }
+
+    @Override
+    public int hashCode() {
+        return (int)getId();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result = false;
+        if(obj instanceof Person){
+            Person p = (Person)obj;
+            if(p.getId() == this.getId() && p.getFirstName().equals(this.getFirstName())
+            && p.getLastName().equals(this.getLastName()) && p.getAge() == this.getAge()
+            && Objects.equals(p.getGender(), this.getGender())){
+                result = true;
+            }
+        }
+        return result;
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
