@@ -4,8 +4,8 @@ public class Dog extends Animal{
 
     private String breed;
 
-    public Dog(String firstName, int age, Gender gender, Person owner, String breed) {
-        super(firstName, age, gender, owner);
+    public Dog(String firstName, int age, Gender gender, long ownerId, String breed) {
+        super(firstName, age, gender, ownerId);
         this.breed = breed;
     }
 

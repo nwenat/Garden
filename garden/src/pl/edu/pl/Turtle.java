@@ -18,9 +18,9 @@ public class Turtle extends Animal {
 
     private Condition condition;
 
-    public Turtle(String firstName, int age, Gender gender, Person owner) {
-        super(firstName, age, gender, owner);
-        condition = Condition.ACTIVE;
+    public Turtle(String firstName, int age, Gender gender, long ownerId) {
+        super(firstName, age, gender, ownerId);
+        this.condition = Condition.ACTIVE;
     }
 
     @Override

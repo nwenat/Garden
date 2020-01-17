@@ -28,6 +28,10 @@ public abstract class Creature {
         this.gender = gender;
     }
 
+    public Creature(long id) {
+        this.id = id;
+    }
+
     public abstract void info();
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

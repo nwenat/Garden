@@ -19,7 +19,7 @@ public class Menu {
                     System.out.println("Zapisanie i zamknięnie programu ///////");
                     break;
                 case ADD_USER:
-                    //dataBase.addUser();
+                    dataBase.addUser();
                     break;
                 case REMOVE_USER:
                     //dataBase.removeUser();

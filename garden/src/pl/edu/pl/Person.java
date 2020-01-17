@@ -14,12 +14,17 @@ public class Person extends Creature {
         this.lastName = lastName;
     }
 
+    public Person() {
+        super(personCount);
+        personCount++;
+    }
+
     @Override
     public void info() {
         System.out.println("Id: " + getId());
         System.out.println(getFirstName() + " " + getLastName());
         System.out.println("Wiek: " + getAge());
-        System.out.println("Plec: " + getGender().getValuePL());
+        System.out.println("Plec: " + (getGender() == null ? "NIE PODANO" : getGender().getValuePL()));
         System.out.println("Zwierzaki: ....");
         System.out.println("--------------");
     }

@@ -3,14 +3,14 @@ package pl.edu.pl;
 public abstract class Animal extends Creature {
 
     private static long animalCount = 1;
-    private Person owner;
+    private long ownerId;
     private Position position;
 
-    public Animal(String firstName, int age, Gender gender, Person owner) {
+    public Animal(String firstName, int age, Gender gender, long ownerId) {
         super(animalCount, firstName, age, gender);
         animalCount++;
-        this.owner = owner;
-        this.position = new Position(0, 0);
+        this.ownerId = ownerId;
+
     }
 
     public void infooo() {
@@ -22,12 +22,13 @@ public abstract class Animal extends Creature {
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
 
-    public Person getOwner() {
-        return owner;
+
+    public long getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(Person owner) {
-        this.owner = owner;
+    public void setOwnerId(long ownerId) {
+        this.ownerId = ownerId;
     }
 
     public Position getPosition() {
