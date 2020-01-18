@@ -15,13 +15,17 @@ public class DataBase {
         System.out.println("Podaj imie: ");
         owner.setFirstName(scanner.nextLine());
         System.out.println("Podaj nazwisko: ");
-        owner.setLastName(scanner.next());
+        owner.setLastName(scanner.nextLine());
         System.out.println("Podaj wiek: ");
         int age = 0;
         do {
-            age = scanner.nextInt();
+            try {
+                age = scanner.nextInt();
+            } catch (Exception e) {
+                scanner.next();
+            }
             if(age < 1){
-                System.out.println("Bledna wartosc, podaj ja jeszcze raz");
+                System.out.println("Bledna wartosc, podaj wiek jeszcze raz");
             }
         } while (age < 1);
         owner.setAge(age);
@@ -43,11 +47,35 @@ public class DataBase {
         System.out.println("Nowy uzytkownik zostal dodany.");
     }
 
-    public void removeUser(Person owner){
-        ownersList.remove(owner);
+    public void removeUser(){
+        showOwnerList();
+        System.out.println("Podaj id wlasciciela ktory ma zostac usuniety: ");
+        long idUserToRemove = 0;
+        do{
+            try{
+                idUserToRemove = scanner.nextLong();
+            } catch (Exception e){
+                scanner.next();
+                System.out.println("Bledna wartosc, podaj numer: ");
+            }
+        } while (idUserToRemove < 0);
+
+        Person ownerToRemove = null;
+        for (Person person : ownersList) {
+            if (person.getId() == idUserToRemove){
+                ownerToRemove = person;
+            }
+        }
+        if (ownerToRemove != null){
+            ownersList.remove(ownerToRemove);
+            System.out.println("Wlasciciel zostal usuniety");
+        } else{
+            System.out.println("Blednie podany id, nie ma tekiego wlasciciela");
+        }
     }
 
     public void showOwnerList(){
+        System.out.println("----LISTA WLASCICIELI----");
         ownersList.stream().forEach(o -> o.info());
     }
 

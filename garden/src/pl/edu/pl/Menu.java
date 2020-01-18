@@ -22,7 +22,7 @@ public class Menu {
                     dataBase.addUser();
                     break;
                 case REMOVE_USER:
-                    //dataBase.removeUser();
+                    dataBase.removeUser();
                     break;
                 case LIST_OF_USERS:
                     dataBase.showOwnerList();
