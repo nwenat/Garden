@@ -10,11 +10,16 @@ public abstract class Animal extends Creature {
         super(animalCount, firstName, age, gender);
         animalCount++;
         this.ownerId = ownerId;
+    }
 
+    public Animal() {
+        super(animalCount);
+        animalCount++;
+        this.position = new Position(0,0);
     }
 
     public void infooo() {
-        System.out.println("Id: " + getId());
+        System.out.println("Zwierzak id: " + getId());
         System.out.println(getFirstName());
         System.out.println("Wiek: " + getAge());
         System.out.println("Plec: " + getGender().getValuePL());

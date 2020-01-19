@@ -9,6 +9,9 @@ public class Dog extends Animal{
         this.breed = breed;
     }
 
+    public Dog() {
+    }
+
     @Override
     public void info() {
         super.infooo();

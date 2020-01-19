@@ -28,7 +28,7 @@ public class Menu {
                     dataBase.showOwnerList();
                     break;
                 case ADD_ANIMAL:
-                    System.out.println("Dodaj ziwerze ///////");
+                    dataBase.addAnimal();
                     break;
                 case REMOVE_ANIMAL:
                     System.out.println("Usun zwierze ///////");

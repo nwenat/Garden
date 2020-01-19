@@ -21,12 +21,11 @@ public class Person extends Creature {
 
     @Override
     public void info() {
-        System.out.println("Id: " + getId());
+        System.out.println("Wlasciciel id: " + getId());
         System.out.println(getFirstName() + " " + getLastName());
         System.out.println("Wiek: " + getAge());
         System.out.println("Plec: " + (getGender() == null ? "NIE PODANO" : getGender().getValuePL()));
-        System.out.println("Zwierzaki: ....");
-        System.out.println("--------------");
+        System.out.println("Zwierzaki: ");
     }
 
     @Override

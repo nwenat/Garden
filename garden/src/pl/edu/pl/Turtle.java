@@ -23,6 +23,9 @@ public class Turtle extends Animal {
         this.condition = Condition.ACTIVE;
     }
 
+    public Turtle() {
+    }
+
     @Override
     public void info() {
         super.infooo();

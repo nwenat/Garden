@@ -76,11 +76,74 @@ public class DataBase {
 
     public void showOwnerList(){
         System.out.println("----LISTA WLASCICIELI----");
-        ownersList.stream().forEach(o -> o.info());
+        for (Person person : ownersList) {
+            person.info();
+            animalsList.stream().filter(a -> a.getOwnerId() == person.getId()).forEach(a -> a.info());
+            System.out.println("//////////////////////");
+        }
     }
 
-    public void addAnimal(Animal animal){
-        animalsList.add(animal);
+    public void addAnimal(){
+        Animal newAnimal = null;
+        String animalSymbol = "";
+        do {
+            System.out.println("Podaj jakie chcesz storzyc ziwerze: \n zolw - z    kot - k    pies -p");
+            animalSymbol = scanner.next();
+            if(animalSymbol.toLowerCase().equals("z")){
+                newAnimal = new Turtle();
+            } else if(animalSymbol.toLowerCase().equals("k")){
+                newAnimal = new Cat();
+            } else if(animalSymbol.toLowerCase().equals("p")){
+                newAnimal = new Dog();
+            }else {
+                System.out.println("bledna wartosc, podaj jeszcze raz z / k / p ");
+            }
+        } while (newAnimal == null);
+        System.out.println("Podaj imie: ");
+        newAnimal.setFirstName(scanner.nextLine());
+        System.out.println("Podaj wiek: ");
+        int age = 0;
+        do {
+            try {
+                age = scanner.nextInt();
+            } catch (Exception e) {
+                scanner.next();
+            }
+            if(age < 1){
+                System.out.println("Bledna wartosc, podaj wiek jeszcze raz");
+            }
+        } while (age < 1);
+        newAnimal.setAge(age);
+        Creature.Gender gender = null;
+        String genderSymbol = "";
+        do {
+            System.out.println("Podaj plec K / M: ");
+            genderSymbol = scanner.next();
+            if(genderSymbol.toLowerCase().equals("k")){
+                gender = Creature.Gender.FEMALE;
+            } else if(genderSymbol.toLowerCase().equals("m")){
+                gender = Creature.Gender.MALE;
+            } else {
+                System.out.println("bledna wartosc, podaj jeszcze raz K / M: ");
+            }
+        } while (gender == null);
+        newAnimal.setGender(gender);
+
+        System.out.println("Podaj id wlasciciela: ");
+        int ownerId = 0;
+        do {
+            try {
+                ownerId = scanner.nextInt();
+            } catch (Exception e) {
+                scanner.next();
+            }
+            if(ownerId < 1){
+                System.out.println("Bledna wartosc, podaj id wlasciciela jeszcze raz");
+            }
+        } while (ownerId < 1);
+        newAnimal.setOwnerId(ownerId);
+
+        System.out.println("Nowe zwierze zostalo dodane.");
     }
 
     public void removeAnimal(Animal animal){
