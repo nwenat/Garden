@@ -24,6 +24,16 @@ public class Turtle extends Animal {
     }
 
     public Turtle() {
+        this.condition = Condition.ACTIVE;
+    }
+
+    public void feed(){
+        if(this.condition == Condition.HIDDEN){
+            this.condition = Condition.ACTIVE;
+            System.out.println("Zwierze zostalo nakarmione");
+        } else {
+            System.out.println("Zwierze nie jest glodne");
+        }
     }
 
     @Override

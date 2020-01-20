@@ -5,18 +5,17 @@ import java.util.Scanner;
 
 public class Menu {
 
-
-    private DataBase dataBase = new DataBase();
     private Option selectedOption;
+    private Scanner scanner = new Scanner(System.in);
 
-    public void showMenu(Scanner scanner){
+    public void showMenu(DataBase dataBase){
         do{
             printMenu();
             selectedOption = Option.fromId(scanner.nextLine());
 
             switch (selectedOption) {
                 case CLOSE:
-                    System.out.println("Zapisanie i zamknięnie programu ///////");
+                    System.out.println("Zapisanie i zamknięnie programu ???????????");
                     break;
                 case ADD_USER:
                     dataBase.addUser();
@@ -31,16 +30,19 @@ public class Menu {
                     dataBase.addAnimal();
                     break;
                 case REMOVE_ANIMAL:
-                    System.out.println("Usun zwierze ///////");
+                    dataBase.removeAnimal();
                     break;
                 case LIST_OF_ANIMAL:
                     dataBase.showAnimalsList();
                     break;
                 case MOVE_ANIMAL:
-                    System.out.println("Przesun zwierze ///////");
+                    dataBase.moveAnimal();
                     break;
                 case FEED_TURTLE:
-                    System.out.println("Nakarm zolwia ///////");
+                    dataBase.feedTurtle();
+                    break;
+                case SHOW_GARDEN:
+                    System.out.println("Pokaz ogrod ????????????");
                     break;
                 case UNKNOW:
                     System.out.println("Blednie wybrana opcja");
@@ -50,7 +52,7 @@ public class Menu {
     }
 
     private void printMenu(){
-        System.out.println("-------------MENU-------------");
+        System.out.println("------------- MENU -------------");
         Arrays.stream(Option.values())
                 .filter(o -> !o.getOptionId().equals("-1"))
                 .forEach(o -> System.out.println(o.getOptionId() + " - " + o.getValuePL()));

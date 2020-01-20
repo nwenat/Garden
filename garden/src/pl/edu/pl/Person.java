@@ -25,7 +25,6 @@ public class Person extends Creature {
         System.out.println(getFirstName() + " " + getLastName());
         System.out.println("Wiek: " + getAge());
         System.out.println("Plec: " + (getGender() == null ? "NIE PODANO" : getGender().getValuePL()));
-        System.out.println("Zwierzaki: ");
     }
 
     @Override

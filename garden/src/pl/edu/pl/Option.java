@@ -12,7 +12,8 @@ public enum Option {
     REMOVE_ANIMAL("5", "Usun zwierze"),
     LIST_OF_ANIMAL("6", "Wyswietl liste zwierzat"),
     MOVE_ANIMAL("7", "Przesun zwierze"),
-    FEED_TURTLE("8", "Nakarm zolwia");
+    FEED_TURTLE("8", "Nakarm zolwia"),
+    SHOW_GARDEN("9", "Pokaz ogrod");
 
     private String optionId;
     private String valuePL;
