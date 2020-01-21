@@ -1,6 +1,7 @@
 package pl.edu.pl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -86,7 +87,14 @@ public class DataBase {
         newAnimal.setAge(askForAge());
         newAnimal.setGender(askForGender());
 
-        newAnimal.setOwnerId(askForId("wlasciciela"));
+        Person ownerOfAnimal = null;
+        do {
+            ownerOfAnimal = personFromId(askForId("wlasciciela"));
+            if(ownerOfAnimal == null){
+                System.out.println("Nie ma takiego wlasciciela.");
+            }
+        } while (ownerOfAnimal == null);
+        newAnimal.setOwnerId(ownerOfAnimal.getId());
 
         if(newAnimal instanceof Cat){
             ((Cat)newAnimal).setBreed(askForName("rase"));
@@ -259,5 +267,13 @@ public class DataBase {
             }
         }
         return null;
+    }
+
+    public Set<Person> getOwnersList() {
+        return ownersList;
+    }
+
+    public Set<Animal> getAnimalsList() {
+        return animalsList;
     }
 }

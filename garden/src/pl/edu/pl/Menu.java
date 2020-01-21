@@ -15,7 +15,7 @@ public class Menu {
 
             switch (selectedOption) {
                 case CLOSE:
-                    System.out.println("Zapisanie i zamknięnie programu ???????????");
+                    new CratureFileWriter().saveAll(dataBase.getOwnersList());
                     break;
                 case ADD_USER:
                     dataBase.addUser();

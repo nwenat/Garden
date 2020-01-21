@@ -2,7 +2,7 @@ package pl.edu.pl;
 
 import java.util.Objects;
 
-public class Person extends Creature {
+public class Person extends Creature implements Writable {
 
     private static long personCount = 1;
 
@@ -44,6 +44,23 @@ public class Person extends Creature {
             }
         }
         return result;
+    }
+
+    @Override
+    public String getDataToSave() {
+        String result = "";
+        result += getId() + "\n";
+        result += getFirstName() + "\n";
+        result += getLastName() + "\n";
+        result += getGender() + "\n";
+        result += getAge() + "\n";
+
+        return result;
+    }
+
+    @Override
+    public String getFileNname() {
+        return "users.txt";
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
