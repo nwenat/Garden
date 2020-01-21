@@ -6,16 +6,17 @@ public abstract class Animal extends Creature {
     private long ownerId;
     private Position position;
 
-    public Animal(String firstName, int age, Gender gender, long ownerId) {
+    public Animal( String firstName, int age, Gender gender, long ownerId, Position position) {
         super(animalCount, firstName, age, gender);
         animalCount++;
         this.ownerId = ownerId;
+        this.position = position;
     }
 
-    public Animal() {
+    public Animal(Position position) {
         super(animalCount);
         animalCount++;
-        this.position = new Position(0,0);
+        this.position = position;
     }
 
     public void infooo() {
@@ -23,6 +24,7 @@ public abstract class Animal extends Creature {
         System.out.println(getFirstName());
         System.out.println("Wiek: " + getAge());
         System.out.println("Plec: " + getGender().getValuePL());
+        System.out.println("Pozycja: (" + getPosition().getX() + "," + getPosition().getY() + ")");
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

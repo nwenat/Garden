@@ -10,6 +10,30 @@ public class DataBase {
     private Set<Person> ownersList = new HashSet<>();
     private Set<Animal> animalsList = new HashSet<>();
     private Scanner scanner = new Scanner(System.in);
+    private GardenPlan gardenPlan;
+
+    public DataBase(GardenPlan gardenPlan) {
+        this.gardenPlan = gardenPlan;
+
+        /////////////// do usuniecia!!!!!!!!!!!
+        Person p1 = new Person("Jan", "Kowalski", 29, Creature.Gender.MALE);
+        Person p2 = new Person("Janina", "Kowalska", 31, Creature.Gender.FEMALE);
+        Person p3 = new Person("Kasia", "Turman", 31, Creature.Gender.FEMALE);
+        Person p4 = new Person("Michal", "Doro", 29, Creature.Gender.MALE);
+
+        Animal a1 = new Cat("Filemon", 10, Creature.Gender.FEMALE, 2, "dachowiec", gardenPlan.nextFreeSpot());
+        gardenPlan.addAnimalToTable(a1);
+
+        Animal a2 = new Turtle("Zolwik", 20, Creature.Gender.FEMALE, 3, gardenPlan.nextFreeSpot());
+        gardenPlan.addAnimalToTable(a2);
+        ownersList.add(p1);
+        ownersList.add(p2);
+        ownersList.add(p3);
+        ownersList.add(p4);
+
+        animalsList.add(a1);
+        animalsList.add(a2);
+    }
 
     public void addUser(){
         Person owner = new Person();
@@ -64,9 +88,13 @@ public class DataBase {
 
         newAnimal.setOwnerId(askForId("wlasciciela"));
 
-        if(newAnimal instanceof Cat || newAnimal instanceof Dog){
+        if(newAnimal instanceof Cat){
             ((Cat)newAnimal).setBreed(askForName("rase"));
+        } else if (newAnimal instanceof Dog){
+            ((Dog)newAnimal).setBreed(askForName("rase"));
         }
+        gardenPlan.addAnimalToTable(newAnimal);
+        animalsList.add(newAnimal);
 
         System.out.println("Nowe zwierze zostalo dodane.");
     }
@@ -79,6 +107,7 @@ public class DataBase {
         Animal animalToRemove = animalFromId(idAnimalToRemove);
 
         if (animalToRemove != null){
+            gardenPlan.removeAnimalFromTable(animalToRemove);
             animalsList.remove(animalToRemove);
             System.out.println("Zwierze zostalo usuniete");
         } else{
@@ -103,8 +132,12 @@ public class DataBase {
         long idAnimalForMove = askForId("zwierzecia ktore ma byc przesuniete");
         Animal animalForMove = animalFromId(idAnimalForMove);
         if (animalForMove != null){
-            Direction direction = askForDirection();
-            System.out.println("Jakos sie przesunie, albo i nie??????");
+            if(animalForMove instanceof Turtle && ((Turtle) animalForMove).getCondition() == Turtle.Condition.HIDDEN){
+                System.out.println("Zolw jest schowany i nie mozna go przesunac, najpierw go nakarm.");
+            } else {
+                Direction direction = askForDirection();
+                gardenPlan.move(animalForMove, direction);
+            }
         }
     }
 
@@ -117,7 +150,7 @@ public class DataBase {
     private String askForName(String name){
         String word;
         System.out.println("Podaj " + name + ": ");
-        word = scanner.nextLine();
+        word = scanner.next();
         return word;
     }
 
@@ -148,7 +181,7 @@ public class DataBase {
             } else if(genderSymbol.toLowerCase().equals("m")){
                 gender = Creature.Gender.MALE;
             } else {
-                System.out.println("bledna wartosc, podaj jeszcze raz K / M: ");
+                System.out.println("Bledna wartosc!");
             }
         } while (gender == null);
         return gender;
@@ -169,7 +202,7 @@ public class DataBase {
             }else if(directionSymbol.toLowerCase().equals("p")){
                 direction = Direction.RIGHT;
             } else {
-                System.out.println("bledna wartosc!");
+                System.out.println("Bledna wartosc!");
             }
         } while (direction == null);
         return direction;
@@ -182,13 +215,13 @@ public class DataBase {
             System.out.println("Podaj jakie chcesz storzyc ziwerze: \n zolw - z    kot - k    pies -p");
             animalSymbol = scanner.next();
             if(animalSymbol.toLowerCase().equals("z")){
-                animal = new Turtle();
+                animal = new Turtle(gardenPlan.nextFreeSpot());
             } else if(animalSymbol.toLowerCase().equals("k")){
-                animal = new Cat();
+                animal = new Cat(gardenPlan.nextFreeSpot());
             } else if(animalSymbol.toLowerCase().equals("p")){
-                animal = new Dog();
+                animal = new Dog(gardenPlan.nextFreeSpot());
             }else {
-                System.out.println("bledna wartosc, podaj jeszcze raz z / k / p ");
+                System.out.println("Bledna wartosc!");
             }
         } while (animal == null);
         return animal;
@@ -226,33 +259,5 @@ public class DataBase {
             }
         }
         return null;
-    }
-
-    private Creature creatureFromId(Set<Creature> set, long id){
-
-        for (Creature creature : set) {
-            if (creature.getId() == id){
-                return creature;
-            }
-        }
-        return null;
-    }
-
-    public DataBase() {
-        Person p1 = new Person("Jan", "Kowalski", 29, Creature.Gender.MALE);
-        Person p2 = new Person("Janina", "Kowalska", 31, Creature.Gender.FEMALE);
-        Person p3 = new Person("Kasia", "Turman", 31, Creature.Gender.FEMALE);
-        Person p4 = new Person("Michal", "Doro", 29, Creature.Gender.MALE);
-
-        Animal a1 = new Cat("Filemon", 10, Creature.Gender.FEMALE, 2, "dachowiec");
-        Animal a2 = new Turtle("Zolwik", 20, Creature.Gender.FEMALE, 3);
-
-        ownersList.add(p1);
-        ownersList.add(p2);
-        ownersList.add(p3);
-        ownersList.add(p4);
-
-        animalsList.add(a1);
-        animalsList.add(a2);
     }
 }

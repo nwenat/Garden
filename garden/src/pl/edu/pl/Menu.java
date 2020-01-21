@@ -8,7 +8,7 @@ public class Menu {
     private Option selectedOption;
     private Scanner scanner = new Scanner(System.in);
 
-    public void showMenu(DataBase dataBase){
+    public void showMenu(DataBase dataBase, GardenPlan gardenPlan){
         do{
             printMenu();
             selectedOption = Option.fromId(scanner.nextLine());
@@ -42,7 +42,7 @@ public class Menu {
                     dataBase.feedTurtle();
                     break;
                 case SHOW_GARDEN:
-                    System.out.println("Pokaz ogrod ????????????");
+                    gardenPlan.showGarden();
                     break;
                 case UNKNOW:
                     System.out.println("Blednie wybrana opcja");

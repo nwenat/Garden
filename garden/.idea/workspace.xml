@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3a83c9f-1e78-4dc5-9fe3-9dd8cf84b5a6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pl/edu/pl/GardenPlan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Cat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/DataBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Dog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Garden.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Garden.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/GardenView.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Option.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Turtle.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,7 +88,7 @@
       <workItem from="1579276367020" duration="1334000" />
       <workItem from="1579341572552" duration="1713000" />
       <workItem from="1579425475301" duration="2294000" />
-      <workItem from="1579498885176" duration="10599000" />
+      <workItem from="1579498885176" duration="23697000" />
     </task>
     <servers />
   </component>
@@ -104,5 +107,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/pl/edu/pl/DataBase.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

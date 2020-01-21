@@ -4,12 +4,13 @@ public class Dog extends Animal{
 
     private String breed;
 
-    public Dog(String firstName, int age, Gender gender, long ownerId, String breed) {
-        super(firstName, age, gender, ownerId);
+    public Dog(String firstName, int age, Gender gender, long ownerId, String breed, Position position) {
+        super(firstName, age, gender, ownerId, position);
         this.breed = breed;
     }
 
-    public Dog() {
+    public Dog(Position position) {
+        super(position);
     }
 
     @Override
