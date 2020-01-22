@@ -1,39 +1,17 @@
 package pl.edu.pl;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DataBase {
 
-    private Set<Person> ownersList = new HashSet<>();
-    private Set<Animal> animalsList = new HashSet<>();
+    private List<Person> ownersList = new ArrayList<>();
+    private List<Animal> animalsList = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     private GardenPlan gardenPlan;
 
     public DataBase(GardenPlan gardenPlan) {
         this.gardenPlan = gardenPlan;
-
-        /////////////// do usuniecia!!!!!!!!!!!
-        Person p1 = new Person("Jan", "Kowalski", 29, Creature.Gender.MALE);
-        Person p2 = new Person("Janina", "Kowalska", 31, Creature.Gender.FEMALE);
-        Person p3 = new Person("Kasia", "Turman", 31, Creature.Gender.FEMALE);
-        Person p4 = new Person("Michal", "Doro", 29, Creature.Gender.MALE);
-
-        Animal a1 = new Cat("Filemon", 10, Creature.Gender.FEMALE, 2, "dachowiec", gardenPlan.nextFreeSpot());
-        gardenPlan.addAnimalToTable(a1);
-
-        Animal a2 = new Turtle("Zolwik", 20, Creature.Gender.FEMALE, 3, gardenPlan.nextFreeSpot());
-        gardenPlan.addAnimalToTable(a2);
-        ownersList.add(p1);
-        ownersList.add(p2);
-        ownersList.add(p3);
-        ownersList.add(p4);
-
-        animalsList.add(a1);
-        animalsList.add(a2);
     }
 
     public void addUser(){
@@ -55,6 +33,9 @@ public class DataBase {
 
         if (ownerToRemove != null){
             ownersList.remove(ownerToRemove);
+            animalsList.stream().filter(a -> a.getOwnerId() == ownerToRemove.getId())
+                    .forEach(a -> a.setOwnerId(0));
+
             System.out.println("Wlasciciel zostal usuniety");
         } else{
             System.out.println("Blednie podany id, nie ma tekiego wlasciciela");
@@ -65,8 +46,8 @@ public class DataBase {
         System.out.println("----LISTA WLASCICIELI----");
         for (Person person : ownersList) {
             person.info();
-            Set<Animal> ownerPets = animalsList.stream().filter(a -> a.getOwnerId() == person.getId())
-                    .collect(Collectors.toSet());
+            List<Animal> ownerPets = animalsList.stream().filter(a -> a.getOwnerId() == person.getId())
+                    .collect(Collectors.toList());
             if (!ownerPets.isEmpty()){
                 System.out.println("   Zwierzaki: ");
                 ownerPets.stream().forEach(p -> p.info());
@@ -86,15 +67,7 @@ public class DataBase {
         newAnimal.setFirstName(askForName("imie"));
         newAnimal.setAge(askForAge());
         newAnimal.setGender(askForGender());
-
-        Person ownerOfAnimal = null;
-        do {
-            ownerOfAnimal = personFromId(askForId("wlasciciela"));
-            if(ownerOfAnimal == null){
-                System.out.println("Nie ma takiego wlasciciela.");
-            }
-        } while (ownerOfAnimal == null);
-        newAnimal.setOwnerId(ownerOfAnimal.getId());
+        newAnimal.setOwnerId(askForId("wlasciciela"));
 
         if(newAnimal instanceof Cat){
             ((Cat)newAnimal).setBreed(askForName("rase"));
@@ -111,9 +84,7 @@ public class DataBase {
         showAnimalsList();
 
         long idAnimalToRemove = askForId("zwierzecia ktore ma zostac usuniete");
-
         Animal animalToRemove = animalFromId(idAnimalToRemove);
-
         if (animalToRemove != null){
             gardenPlan.removeAnimalFromTable(animalToRemove);
             animalsList.remove(animalToRemove);
@@ -269,11 +240,22 @@ public class DataBase {
         return null;
     }
 
-    public Set<Person> getOwnersList() {
+    public void setAnimalsListAndAddToTable(List<Animal> animalsList) {
+        this.animalsList = animalsList;
+        animalsList.stream().forEach(a -> gardenPlan.addAnimalToTable(a));
+    }
+
+    ///////////////////////////// GETERS AND SETERS ///////////////////////////////
+
+    public List<Person> getOwnersList() {
         return ownersList;
     }
 
-    public Set<Animal> getAnimalsList() {
+    public List<Animal> getAnimalsList() {
         return animalsList;
+    }
+
+    public void setOwnersList(List<Person> ownersList) {
+        this.ownersList = ownersList;
     }
 }

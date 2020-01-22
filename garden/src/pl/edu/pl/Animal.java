@@ -19,13 +19,29 @@ public abstract class Animal extends Creature {
         this.position = position;
     }
 
-    public void infooo() {
+    public void infoBegining() {
         System.out.println("Zwierzak id: " + getId());
         System.out.println(getFirstName());
         System.out.println("Wiek: " + getAge());
         System.out.println("Plec: " + getGender().getValuePL());
         System.out.println("Pozycja: (" + getPosition().getX() + "," + getPosition().getY() + ")");
     }
+
+    public String getDataToSaveBeginning() {
+        String result = "";
+        result += getFirstName() + ",";
+        result += getGender() + ",";
+        result += getAge() + ",";
+        result += getPosition().getX() + ",";
+        result += getPosition().getY() + ",";
+        result += getOwnerId() + ",";
+
+        return result;
+    }
+
+    public abstract String getFileName();
+
+    //public abstract String getDataToSave();
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
 

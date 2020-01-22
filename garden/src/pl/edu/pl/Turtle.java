@@ -1,6 +1,6 @@
 package pl.edu.pl;
 
-public class Turtle extends Animal {
+public class Turtle extends Animal implements Writable{
 
     public enum Condition {
         HIDDEN("schowany w skorupie"),
@@ -46,9 +46,23 @@ public class Turtle extends Animal {
 
     @Override
     public void info() {
-        super.infooo();
+        super.infoBegining();
         System.out.println("Stan: " + condition.getValuePL());
         System.out.println("--------------");
+    }
+
+    @Override
+    public String getDataToSave() {
+        String result = "";
+        result += getDataToSaveBeginning();
+        result += getCondition() + ",";
+        result += "z\n";
+        return result;
+    }
+
+    @Override
+    public String getFileName() {
+        return "animals.txt";
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

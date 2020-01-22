@@ -7,6 +7,12 @@ public class Menu {
 
     private Option selectedOption;
     private Scanner scanner = new Scanner(System.in);
+    private CratureFileWriter cratureFileWriter = new CratureFileWriter();
+    private CreatureFileReader creatureFileReader = new CreatureFileReader();
+
+    public Menu() {
+
+    }
 
     public void showMenu(DataBase dataBase, GardenPlan gardenPlan){
         do{
@@ -15,7 +21,12 @@ public class Menu {
 
             switch (selectedOption) {
                 case CLOSE:
-                    new CratureFileWriter().saveAll(dataBase.getOwnersList());
+                    if( !dataBase.getOwnersList().isEmpty()) {
+                        cratureFileWriter.saveAllPeople(dataBase.getOwnersList());
+                    }
+                    if ( !dataBase.getAnimalsList().isEmpty()) {
+                        cratureFileWriter.saveAllAnimals(dataBase.getAnimalsList());
+                    }
                     break;
                 case ADD_USER:
                     dataBase.addUser();

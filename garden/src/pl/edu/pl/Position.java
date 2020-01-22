@@ -23,8 +23,4 @@ public class Position {
     public int getY() {
         return y;
     }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 }

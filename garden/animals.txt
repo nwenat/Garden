@@ -1,0 +1,2 @@
+Filemon,FEMALE,10,1,0,2,dachowiec,k
+Zolwik,FEMALE,20,0,2,3,HIDDEN,z

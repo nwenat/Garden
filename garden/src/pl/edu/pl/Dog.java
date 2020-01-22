@@ -1,6 +1,6 @@
 package pl.edu.pl;
 
-public class Dog extends Animal{
+public class Dog extends Animal implements Writable{
 
     private String breed;
 
@@ -15,9 +15,23 @@ public class Dog extends Animal{
 
     @Override
     public void info() {
-        super.infooo();
+        super.infoBegining();
         System.out.println("Rasa: " + breed);
         System.out.println("--------------");
+    }
+
+    @Override
+    public String getDataToSave() {
+        String result = "";
+        result += getDataToSaveBeginning();
+        result += getBreed() + ",";
+        result += "p\n";
+        return result;
+    }
+
+    @Override
+    public String getFileName() {
+        return "animals.txt";
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////

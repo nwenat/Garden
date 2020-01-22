@@ -49,17 +49,16 @@ public class Person extends Creature implements Writable {
     @Override
     public String getDataToSave() {
         String result = "";
-        result += getId() + "\n";
-        result += getFirstName() + "\n";
-        result += getLastName() + "\n";
-        result += getGender() + "\n";
+        result += getFirstName() + ",";
+        result += getLastName() + ",";
+        result += getGender() + ",";
         result += getAge() + "\n";
 
         return result;
     }
 
     @Override
-    public String getFileNname() {
+    public String getFileName() {
         return "users.txt";
     }
 
