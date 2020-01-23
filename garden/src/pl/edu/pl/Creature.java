@@ -21,13 +21,6 @@ public abstract class Creature {
     private int age;
     private Gender gender;
 
-    public Creature(long id, String firstName, int age, Gender gender) {
-        this.id = id;
-        this.firstName = firstName;
-        this.age = age;
-        this.gender = gender;
-    }
-
     public Creature(long id) {
         this.id = id;
     }

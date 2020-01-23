@@ -8,15 +8,16 @@ public class Person extends Creature implements Writable {
 
     private String lastName;
 
-    public Person(String firstName, String lastName, int age, Gender gender) {
-        super(personCount, firstName, age, gender);
-        personCount++;
-        this.lastName = lastName;
-    }
-
     public Person() {
         super(personCount);
         personCount++;
+    }
+
+    public Person(long id) {
+        super(id);
+        if(personCount < id){
+            personCount = id + 1;
+        }
     }
 
     @Override
@@ -49,6 +50,7 @@ public class Person extends Creature implements Writable {
     @Override
     public String getDataToSave() {
         String result = "";
+        result += getId() + ",";
         result += getFirstName() + ",";
         result += getLastName() + ",";
         result += getGender() + ",";

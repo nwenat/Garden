@@ -4,13 +4,12 @@ public class Cat extends Animal implements Writable{
 
     private String breed;
 
-    public Cat(String firstName, int age, Gender gender, long ownerId, String breed, Position position) {
-        super(firstName, age, gender, ownerId, position);
-        this.breed = breed;
-    }
-
     public Cat(Position position) {
         super(position);
+    }
+
+    public Cat(long id, Position position) {
+        super(id, position);
     }
 
     @Override

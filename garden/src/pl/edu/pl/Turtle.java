@@ -18,14 +18,13 @@ public class Turtle extends Animal implements Writable{
 
     private Condition condition;
 
-    public Turtle(String firstName, int age, Gender gender, long ownerId, Position position) {
-        super(firstName, age, gender, ownerId, position);
-        this.condition = Condition.ACTIVE;
-    }
-
     public Turtle(Position position) {
         super(position);
         this.condition = Condition.ACTIVE;
+    }
+
+    public Turtle(long id, Position position) {
+        super(id, position);
     }
 
     public void feed(){

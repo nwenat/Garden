@@ -6,17 +6,18 @@ public abstract class Animal extends Creature {
     private long ownerId;
     private Position position;
 
-    public Animal( String firstName, int age, Gender gender, long ownerId, Position position) {
-        super(animalCount, firstName, age, gender);
-        animalCount++;
-        this.ownerId = ownerId;
-        this.position = position;
-    }
-
     public Animal(Position position) {
         super(animalCount);
         animalCount++;
         this.position = position;
+    }
+
+    public Animal(long id, Position position) {
+        super(id);
+        this.position = position;
+        if(animalCount < id){
+            animalCount = id + 1;
+        }
     }
 
     public void infoBegining() {
@@ -29,6 +30,7 @@ public abstract class Animal extends Creature {
 
     public String getDataToSaveBeginning() {
         String result = "";
+        result += getId() + ",";
         result += getFirstName() + ",";
         result += getGender() + ",";
         result += getAge() + ",";
@@ -41,10 +43,7 @@ public abstract class Animal extends Creature {
 
     public abstract String getFileName();
 
-    //public abstract String getDataToSave();
-
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
-
 
     public long getOwnerId() {
         return ownerId;

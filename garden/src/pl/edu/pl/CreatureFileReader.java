@@ -6,10 +6,9 @@ import java.util.List;
 
 public class CreatureFileReader {
 
-    private List<Person> ownersList = new ArrayList<>();
-    private List<Animal> animalsList = new ArrayList<>();
-
     public List<Person> readUsers(){
+
+        List<Person> ownersList = new ArrayList<>();
 
         File file = new File("users.txt");
         BufferedReader br = null;
@@ -19,11 +18,12 @@ public class CreatureFileReader {
             String st;
             while ((st = br.readLine()) != null){
                 String[] pData = st.split(",");
-                Person owner = new Person();
-                owner.setFirstName(pData[0]);
-                owner.setLastName(pData[1]);
-                owner.setGender(Creature.Gender.valueOf(pData[2]));
-                owner.setAge(Integer.valueOf(pData[3]));
+                int id = Integer.valueOf(pData[0]);
+                Person owner = new Person(id);
+                owner.setFirstName(pData[1]);
+                owner.setLastName(pData[2]);
+                owner.setGender(Creature.Gender.valueOf(pData[3]));
+                owner.setAge(Integer.valueOf(pData[4]));
 
                 ownersList.add(owner);
             }
@@ -48,6 +48,8 @@ public class CreatureFileReader {
 
     public List<Animal> readAnimals(){
 
+        List<Animal> animalsList = new ArrayList<>();
+
         File file = new File("animals.txt");
         BufferedReader br = null;
 
@@ -57,28 +59,29 @@ public class CreatureFileReader {
             while ((st = br.readLine()) != null){
                 String[] aData = st.split(",");
                 Animal animal = null;
-                Position position = new Position(Integer.valueOf(aData[3]), Integer.valueOf(aData[4]));
+                int id = Integer.valueOf(aData[0]);
+                Position position = new Position(Integer.valueOf(aData[4]), Integer.valueOf(aData[5]));
 
-                String animalSymbol = aData[7];
+                String animalSymbol = aData[8];
                 if(animalSymbol.toLowerCase().equals("z")){
-                    animal = new Turtle(position);
+                    animal = new Turtle(id, position);
                 } else if(animalSymbol.toLowerCase().equals("k")){
-                    animal = new Cat(position);
+                    animal = new Cat(id, position);
                 } else if(animalSymbol.toLowerCase().equals("p")){
-                    animal = new Dog(position);
+                    animal = new Dog(id, position);
                 }
 
-                animal.setFirstName(aData[0]);
-                animal.setGender(Creature.Gender.valueOf(aData[1]));
-                animal.setAge(Integer.valueOf(aData[2]));
-                animal.setOwnerId(Integer.valueOf(aData[5]));
+                animal.setFirstName(aData[1]);
+                animal.setGender(Creature.Gender.valueOf(aData[2]));
+                animal.setAge(Integer.valueOf(aData[3]));
+                animal.setOwnerId(Integer.valueOf(aData[6]));
 
                 if(animal instanceof Cat){
-                    ((Cat)animal).setBreed(aData[6]);
+                    ((Cat)animal).setBreed(aData[7]);
                 } else if (animal instanceof Dog){
-                    ((Dog)animal).setBreed(aData[6]);
+                    ((Dog)animal).setBreed(aData[7]);
                 } else if (animal instanceof Turtle){
-                    ((Turtle)animal).setCondition(Turtle.Condition.valueOf(aData[6]));
+                    ((Turtle)animal).setCondition(Turtle.Condition.valueOf(aData[7]));
                 }
 
                 animalsList.add(animal);

@@ -4,13 +4,12 @@ public class Dog extends Animal implements Writable{
 
     private String breed;
 
-    public Dog(String firstName, int age, Gender gender, long ownerId, String breed, Position position) {
-        super(firstName, age, gender, ownerId, position);
-        this.breed = breed;
-    }
-
     public Dog(Position position) {
         super(position);
+    }
+
+    public Dog(long id, Position position) {
+        super(id, position);
     }
 
     @Override
