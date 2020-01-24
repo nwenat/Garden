@@ -9,6 +9,7 @@ public class DataBase {
     private List<Animal> animalsList = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     private GardenPlan gardenPlan;
+    private QueryForUser query = new QueryForUser();
 
     public DataBase(GardenPlan gardenPlan) {
         this.gardenPlan = gardenPlan;
@@ -16,10 +17,10 @@ public class DataBase {
 
     public void addUser(){
         Person owner = new Person();
-        owner.setFirstName(askForName("imie"));
-        owner.setLastName(askForName("nazwisko"));
-        owner.setAge(askForAge());
-        owner.setGender(askForGender());
+        owner.setFirstName(query.askForName("imie"));
+        owner.setLastName(query.askForName("nazwisko"));
+        owner.setAge(query.askForAge());
+        owner.setGender(query.askForGender());
 
         ownersList.add(owner);
         System.out.println("Nowy uzytkownik zostal dodany.");
@@ -28,7 +29,7 @@ public class DataBase {
     public void removeUser(){
         showOwnerList();
 
-        long idUserToRemove = askForId("wlasciciela ktory ma zostac usuniety");
+        long idUserToRemove = query.askForId("wlasciciela ktory ma zostac usuniety");
         Person ownerToRemove = personFromId(idUserToRemove);
 
         if (ownerToRemove != null){
@@ -62,17 +63,17 @@ public class DataBase {
     }
 
     public void addAnimal(){
-        Animal newAnimal = askWhichAnimal();
+        Animal newAnimal = query.askWhichAnimal(gardenPlan);
 
-        newAnimal.setFirstName(askForName("imie"));
-        newAnimal.setAge(askForAge());
-        newAnimal.setGender(askForGender());
-        newAnimal.setOwnerId(askForId("wlasciciela"));
+        newAnimal.setFirstName(query.askForName("imie"));
+        newAnimal.setAge(query.askForAge());
+        newAnimal.setGender(query.askForGender());
+        newAnimal.setOwnerId(query.askForId("wlasciciela"));
 
         if(newAnimal instanceof Cat){
-            ((Cat)newAnimal).setBreed(askForName("rase"));
+            ((Cat)newAnimal).setBreed(query.askForName("rase"));
         } else if (newAnimal instanceof Dog){
-            ((Dog)newAnimal).setBreed(askForName("rase"));
+            ((Dog)newAnimal).setBreed(query.askForName("rase"));
         }
         gardenPlan.addAnimalToTable(newAnimal);
         animalsList.add(newAnimal);
@@ -83,7 +84,7 @@ public class DataBase {
     public void removeAnimal(){
         showAnimalsList();
 
-        long idAnimalToRemove = askForId("zwierzecia ktore ma zostac usuniete");
+        long idAnimalToRemove = query.askForId("zwierzecia ktore ma zostac usuniete");
         Animal animalToRemove = animalFromId(idAnimalToRemove);
         if (animalToRemove != null){
             gardenPlan.removeAnimalFromTable(animalToRemove);
@@ -96,7 +97,7 @@ public class DataBase {
 
     public void feedTurtle(){
         showTurtleList();
-        long idTurtle = askForId("zolwia ktory ma zostac nakarmiony");
+        long idTurtle = query.askForId("zolwia ktory ma zostac nakarmiony");
 
         Animal animal = animalFromId(idTurtle);
         if (animal != null && animal instanceof Turtle){
@@ -108,13 +109,13 @@ public class DataBase {
 
     public void moveAnimal(){
         showAnimalsList();
-        long idAnimalForMove = askForId("zwierzecia ktore ma byc przesuniete");
+        long idAnimalForMove = query.askForId("zwierzecia ktore ma byc przesuniete");
         Animal animalForMove = animalFromId(idAnimalForMove);
         if (animalForMove != null){
             if(animalForMove instanceof Turtle && ((Turtle) animalForMove).getCondition() == Turtle.Condition.HIDDEN){
                 System.out.println("Zolw jest schowany i nie mozna go przesunac, najpierw go nakarm.");
             } else {
-                Direction direction = askForDirection();
+                Direction direction = query.askForDirection();
                 gardenPlan.move(animalForMove, direction);
             }
         }
@@ -124,102 +125,6 @@ public class DataBase {
         System.out.println("----LISTA ZOLWI----");
         animalsList.stream().filter(a -> a instanceof Turtle)
                 .forEach(o -> o.info());
-    }
-
-    private String askForName(String name){
-        String word;
-        System.out.println("Podaj " + name + ": ");
-        word = scanner.next();
-        return word;
-    }
-
-    private int askForAge(){
-        System.out.println("Podaj wiek: ");
-        int age = 0;
-        do {
-            try {
-                age = scanner.nextInt();
-            } catch (Exception e) {
-                scanner.next();
-            }
-            if(age < 1){
-                System.out.println("Bledna wartosc, podaj wiek jeszcze raz");
-            }
-        } while (age < 1);
-        return age;
-    }
-
-    private Creature.Gender askForGender(){
-        Creature.Gender gender = null;
-        String genderSymbol = "";
-        do {
-            System.out.println("Podaj plec K / M: ");
-            genderSymbol = scanner.next();
-            if(genderSymbol.toLowerCase().equals("k")){
-                gender = Creature.Gender.FEMALE;
-            } else if(genderSymbol.toLowerCase().equals("m")){
-                gender = Creature.Gender.MALE;
-            } else {
-                System.out.println("Bledna wartosc!");
-            }
-        } while (gender == null);
-        return gender;
-    }
-
-    private Direction askForDirection(){
-        Direction direction = null;
-        String directionSymbol = "";
-        do {
-            System.out.println("Podaj kierunek przesuniecia\n   G\nL     P\n   D");
-            directionSymbol = scanner.next();
-            if(directionSymbol.toLowerCase().equals("g")){
-                direction = Direction.UP;
-            } else if(directionSymbol.toLowerCase().equals("d")){
-                direction = Direction.DOWN;
-            }else if(directionSymbol.toLowerCase().equals("l")){
-                direction = Direction.LEFT;
-            }else if(directionSymbol.toLowerCase().equals("p")){
-                direction = Direction.RIGHT;
-            } else {
-                System.out.println("Bledna wartosc!");
-            }
-        } while (direction == null);
-        return direction;
-    }
-
-    private Animal askWhichAnimal(){
-        Animal animal = null;
-        String animalSymbol = "";
-        do {
-            System.out.println("Podaj jakie chcesz storzyc ziwerze: \n zolw - z    kot - k    pies -p");
-            animalSymbol = scanner.next();
-            if(animalSymbol.toLowerCase().equals("z")){
-                animal = new Turtle(gardenPlan.nextFreeSpot());
-            } else if(animalSymbol.toLowerCase().equals("k")){
-                animal = new Cat(gardenPlan.nextFreeSpot());
-            } else if(animalSymbol.toLowerCase().equals("p")){
-                animal = new Dog(gardenPlan.nextFreeSpot());
-            }else {
-                System.out.println("Bledna wartosc!");
-            }
-        } while (animal == null);
-        return animal;
-    }
-
-    private long askForId(String name){
-        System.out.println("Podaj id " + name + ": ");
-        long id = 0;
-        do {
-            try {
-                id = scanner.nextLong();
-            } catch (Exception e) {
-                scanner.next();
-            }
-            if(id < 1){
-                System.out.println("Bledna wartosc, podaj id jeszcze raz");
-            }
-        } while (id < 1);
-        return id;
     }
 
     private Animal animalFromId(long id){

@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e3a83c9f-1e78-4dc5-9fe3-9dd8cf84b5a6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/animals.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Cat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/CreatureFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/CreatureFileReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Dog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/Turtle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/Turtle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/users.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pl/edu/pl/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pl/edu/pl/DataBase.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +89,10 @@
       <workItem from="1579707139764" duration="704000" />
       <workItem from="1579709019552" duration="1312000" />
       <workItem from="1579717290148" duration="158000" />
-      <workItem from="1579767895403" duration="894000" />
+      <workItem from="1579767895403" duration="1287000" />
+      <workItem from="1579790688751" duration="635000" />
+      <workItem from="1579796725304" duration="3338000" />
+      <workItem from="1579855521141" duration="485000" />
     </task>
     <servers />
   </component>
