@@ -7,9 +7,8 @@ public class DataBase {
 
     private List<Person> ownersList = new ArrayList<>();
     private List<Animal> animalsList = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
     private GardenPlan gardenPlan;
-    private QueryForUser query = new QueryForUser();
+    private QuestionsToUser query = new QuestionsToUser();
 
     public DataBase(GardenPlan gardenPlan) {
         this.gardenPlan = gardenPlan;

@@ -2,10 +2,9 @@ package pl.edu.pl;
 
 import java.util.Scanner;
 
-public class QueryForUser {
+public class QuestionsToUser {
 
     private Scanner scanner = new Scanner(System.in);
-
 
     public String askForName(String name){
         String word;
