@@ -27,10 +27,6 @@ public abstract class Creature {
 
     public abstract void info();
 
-    public abstract String getFileName();
-
-    public abstract String getDataToSave();
-
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
 
     public String getFirstName() {

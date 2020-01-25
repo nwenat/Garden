@@ -41,6 +41,8 @@ public abstract class Animal extends Creature {
         return result;
     }
 
+    public abstract String getDataToSave();
+
     public abstract String getFileName();
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
