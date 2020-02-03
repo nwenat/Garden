@@ -1,5 +1,5 @@
-1,Jan,Kowalski,MALE,29
-2,Janina,Kowalska,FEMALE,31
-3,Kasia,Turman,FEMALE,31
-4,Michal,Doro,MALE,29
-5,Nina,K,FEMALE,25
+1,Jan,Adam,Kowalski,MALE,29
+2,Janina,Kasia,Kowalska,FEMALE,31
+3,Kasia,Anna,Turman,FEMALE,31
+4,Michal,Jerzy,Doro,MALE,29
+5,Nina,Anna,K,FEMALE,25

@@ -6,6 +6,7 @@ public class Person extends Creature implements Writable {
 
     private static long personCount = 1;
 
+    private String secondName;
     private String lastName;
 
     public Person() {
@@ -23,7 +24,7 @@ public class Person extends Creature implements Writable {
     @Override
     public void info() {
         System.out.println("Wlasciciel id: " + getId());
-        System.out.println(getFirstName() + " " + getLastName());
+        System.out.println(getFirstName() + ", " + secondName + " " + getLastName());
         System.out.println("Wiek: " + getAge());
         System.out.println("Plec: " + (getGender() == null ? "NIE PODANO" : getGender().getValuePL()));
     }
@@ -52,6 +53,7 @@ public class Person extends Creature implements Writable {
         String result = "";
         result += getId() + ",";
         result += getFirstName() + ",";
+        result += getSecondName() + ",";
         result += getLastName() + ",";
         result += getGender() + ",";
         result += getAge() + "\n";
@@ -65,6 +67,15 @@ public class Person extends Creature implements Writable {
     }
 
     ///////////////////////////// GETERS AND SETERS ///////////////////////////////
+
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
 
     public String getLastName() {
         return lastName;

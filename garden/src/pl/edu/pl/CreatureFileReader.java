@@ -21,9 +21,10 @@ public class CreatureFileReader {
                 int id = Integer.valueOf(pData[0]);
                 Person owner = new Person(id);
                 owner.setFirstName(pData[1]);
-                owner.setLastName(pData[2]);
-                owner.setGender(Creature.Gender.valueOf(pData[3]));
-                owner.setAge(Integer.valueOf(pData[4]));
+                owner.setSecondName(pData[2]);
+                owner.setLastName(pData[3]);
+                owner.setGender(Creature.Gender.valueOf(pData[4]));
+                owner.setAge(Integer.valueOf(pData[5]));
 
                 ownersList.add(owner);
             }
